@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .container {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 왼쪽과 오른쪽을 1:1 비율로 나눔 */
+        }
+
+        .left {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            /* 왼쪽을 위아래로 1:1 비율로 나눔 */
+        }
+
+        .top {
+            /* 왼쪽 위 영역 스타일 */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 왼쪽 위 영역을 두 개의 열로 나눔 */
+        }
+
+        .bottom {
+            /* 왼쪽 아래 영역 스타일 */
+        }
+
+        .right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 오른쪽을 1:1 비율로 나눔 */
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="left">
+            <div class="top">
+                <div class="item">왼쪽 위 왼쪽</div>
+                <div class="item">왼쪽 위 오른쪽</div>
+            </div>
+            <div class="bottom">왼쪽 아래 영역</div>
+        </div>
+        <div class="right">오른쪽 영역</div>
+    </div>
 </body>
+
 </html>
