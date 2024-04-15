@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <style>
+      .wrap {
+        height: 100%;
+      }
+
+      .wrap .page {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+
+        width: 100%;
+        height: 100%;
+
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+
+      .header {
+        width: 100%;
+        position: fixed;
+        color: green;
+        height: 70px;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">Header</header>
+    <div class="wrap">
+      <div class="page" style="background: black">01</div>
+      <div class="page" style="background: blueviolet">02</div>
+      <div class="page" style="background: brown">03</div>
+      <div class="page" style="background: darkgreen">04</div>
+      <div class="page" style="background: darkblue">05</div>
+    </div>
+  </body>
+</html>
