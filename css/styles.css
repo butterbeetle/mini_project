@@ -9,3 +9,51 @@ body {
 html {
   scroll-snap-type: y mandatory;
 }
+
+
+
+.page {
+  background-color: #E1AF02;  
+}
+
+.main_img{
+  width: 610px;
+  height: 260px;
+  margin: 0 auto;
+  padding-top: 250px;
+  margin-bottom: 50px;
+}
+
+.main_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.introduce {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.introduce_text{
+  margin: 0 50px;
+  margin-top: 50px;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+}
+
+.introduce_text > p:first-child {
+  font-size: 35px;
+}
+
+
+.introduce_text div p {
+  line-height: 50px;
+  text-align: right;
+}
+
+
+
+
