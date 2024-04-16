@@ -154,6 +154,7 @@ html {
 
 .circle:hover {
   background-color: transparent;
+  transition: 0.5s;
 }
 
 .circle:hover > img {
