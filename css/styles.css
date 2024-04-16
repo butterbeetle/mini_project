@@ -56,4 +56,70 @@ html {
 
 
 
+/* 유나 수정 */
 
+.ver2 {
+  padding-top: 200px;
+}
+
+.profile_wrap{ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 554px;
+}
+
+.team_profile {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.team_profile:nth-child(1) {
+  background-color: #D84746;
+}
+
+.team_profile:nth-child(2) {
+  background-color: #618A58;
+}
+
+.team_profile:nth-child(3) {
+  background-color: #8FBCDB;
+}
+
+.team_profile:nth-child(4) {
+  background-color: #BBA2FE;
+}
+
+.team_profile:nth-child(5) {
+  background-color: #E2C881;
+}
+
+.team_profile:nth-child(6) {
+  background-color: #288292;
+}
+
+.circle{
+  position: relative;
+  width: 100%;
+  border-radius: 50%;
+  background-color: white;
+  aspect-ratio: 1/1;
+  margin: 20px 40px;
+  box-sizing: border-box;
+}
+
+.circle img {
+  width: 90%;
+  position: absolute;
+  top: 1%;
+  left: 6%;
+}
+
+.circle:hover {
+  background-color: transparent;
+}
+
+.circle:hover > img {
+  transform: scale(1.2);
+  transition: 0.5s ease-in-out; 
+}
