@@ -21,7 +21,6 @@ div {
     background-color: white;
     border: 0px;
     border-radius: 10px;
-
 }
 
 
@@ -118,6 +117,9 @@ div {
         grid-template-columns: 1fr;
     }
 
+    .left{
+        width: 100%;
+    }
     .left,
     .right {
         display: flex;
