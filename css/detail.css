@@ -4,6 +4,24 @@ div {
     padding: 0px;
 }
 
+.wrap {
+    display: flex;
+    align-items: center;
+}
+
+.wrap button{
+    width: 5em;
+    height: 3em;
+    margin : 3px;
+    background-color: white;
+    border: 0px;
+    font-weight: bolder;
+}
+
+.wrap button:hover{
+    background-color: #eee;
+}
+
 .container {
     max-height: 1000px;
     display: grid;
@@ -78,10 +96,6 @@ div {
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
-    }
-
-    .left {
-        border-bottom: 1.5px solid black;
     }
 
     .left,
