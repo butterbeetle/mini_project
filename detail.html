@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <button class="prev" type="button" onclick="location.href = 'detail.html'"><i class=" fa-solid fa-caret-left
+            fa-2x"></i></button>
+        <div class="container">
+            <div class="left-left">
+                <img src="img/yelinbok.png">
+            </div>
+            <div class="left-right">
+                <span class="profile">Profile</span>
+                <div class="profile__contents">
+                    <div class="profile__content">
+                        <span class="item">Name 👤</span>
+                        <span class="item__value">복예린</span>
+                    </div>
+                    <div class="profile__content">
+                        <span class="item">E-mail 📧</span>
+                        <span class="item__value">yelini9060@naver.com</span>
+                    </div>
+                    <div class="profile__content">
+                        <span class="item">Blog 🏷</span>
+                        <span class="item__value">https://velog.io/@liin/posts</span>
+                    </div>
+                </div>
+            </div>
+            <div class="left-bottom">
+                <div class="aboutMe">
+                    <div>About me</div>
+                    <div class="aboutMe__tags">
+                        <div class="aboutMe__tag">
+                            <div class="tag">INTP</div>
+                            <div class="tag">특징</div>
+                        </div>
+                        <div class="aboutMe__tag">
+                            <div class="tag">취미</div>
+                            <div class="tag">관심사</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="workTogether">
+                    <span>Let's work together</span>
+                    <p>진짜 음식물이 그에서 반장은 오늘날이며, 당합니다. 피식 물품을 같이 칼날이 가라. 없은 내지 수를, 하게 정도가 삶에 체외가 된 강하던 있어 기쁘어요. 그 대통령은 훌륭하다
+                        늘린다면 생각을 선진이 채우다. 판 부정을 딴 음대가 사노 한편은 건치도 있은데. 인한 생산하면서 마음으로 접던 현실에, 우리에서 요즈음에 너에 사찰을, 시작하다.</p>
+                </div>
+            </div>
+            <div class="right">
+                <div class="icons">
+                    <div class="icon">
+                        <img src="img/chorongpark.png">
+                    </div>
+                    <div class="icon">
+                        <img src="img/yunahong.png">
+                    </div>
+                    <div class="icon">
+                        <img src="img/junheoklee.png">
+                    </div>
+                    <div class="icon">
+                        <img src="img/yelinbok_1.png">
+                    </div>
+                    <div class="icon">
+                        <img src="img/seunghoekim.png">
+                    </div>
+                    <div class="icon">
+                        <img src="img/jongminchae.png">
+                    </div>
+                </div>
+                <div class="guest__log-title">
+                    <span>Say "Hello"<br>to our teammate</span>
+                </div>
+                <div class="guest__log">
+                    
+                    <div class="comment__box">
+                        <div class="profile__img">
+                            <img
+                                src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png">
+                        </div>
+                        <div class="user">
+                            <span class="commentName">복예린님에게 한마디</span>
+                            <div class="comment">
+                                <input class='commentInput' type="text" placeholder="댓글을 남겨주세요." max="50">
+                                <button class='send'><i class="fa-regular fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <button class="next" type="button" onclick="location.href = 'detail.html'"><i class=" fa-solid fa-caret-right
+            fa-2x"></i></button>
+    </div>
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Firebase 구성 정보 설정
+        // const firebaseConfig = {
+        //     apiKey: ,
+        //     authDomain: "teamintro-ba1f9.firebaseapp.com",
+        //     projectId: "teamintro-ba1f9",
+        //     storageBucket: "teamintro-ba1f9.appspot.com",
+        //     messagingSenderId: "440810346553",
+        //     appId: 
+        // };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.querySelector('.send').addEventListener('click', async function () {
+            let doc = { 'name': document.querySelector('.commentName').innerText.slice(0,3), 'comment': document.querySelector('.commentInput').value };
+            await addDoc(collection(db, "comments"), doc);
+            window.location.reload();
+        })
+
+        let docs = await getDocs(collection(db, "comments"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let temp_html = `<div class="comment__box">
+                        <div class="profile__img">
+                            <img
+                                src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png">
+                        </div>
+                        <div class="user">
+                            <div class="comment">
+                                <span>${row['comment']}</span>
+                            </div>
+                        </div>
+                    </div>`;
+            document.querySelector('.guest__log').insertAdjacentHTML('afterbegin',temp_html);
+        });
+
+
+    </script>
+    <script src="https://kit.fontawesome.com/748fe0d700.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

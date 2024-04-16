@@ -1,0 +1,227 @@
+@import "css/reset.css";
+
+/* button reset css */
+button{
+    background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.prev {
+    position: absolute;
+    left: 1vw;
+}
+
+.next {
+    position: absolute;
+    left: 98vw;
+}
+
+.container {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2.2fr;
+    grid-template-rows: 4fr 6fr;
+    gap: 2.5px;
+}
+
+.left-left {
+    background-color: #D84746;
+    /* grid-row: span 1; */
+    /* 왼쪽을 위아래로 1:1 비율로 나눔 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+img {
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+}
+
+.left-right {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+}
+
+.profile__contents {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.profile__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.left-bottom {
+    background-color: white;
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+    padding: 30px 60px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    box-sizing: border-box;
+}
+
+.aboutMe__tags {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.tag {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.aboutMe__tag:first-child {
+    margin-right: 200px;
+}
+
+.workTogether {
+    margin-top: 10px;
+}
+
+.workTogether > p {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 50px;
+}
+
+.right {
+    background-color: white;
+    grid-column: 3 / span 1;
+    grid-row: span 2;
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr 7fr;
+}
+
+.icons {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.icon {
+    background-color: #F4F4F4;
+    border-radius: 50%;
+    width: 123px;
+    height: 123px;
+    margin-right: 1.5vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.icon img { 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    align-self: center;
+}
+
+.icons div:nth-child(1):hover{
+    background-color: red;
+}
+
+
+.guest__log {
+    margin-top: 1vh;
+    width: 48vw;
+    height: 70vh;
+    background-color: #F4F4F4;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 5px;
+    box-sizing: border-box;
+}
+
+.comment__box {
+    width: 45vw;
+    height: 9vh;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    padding: 11px;
+    box-sizing: border-box;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-left: 10px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+    background-color: #F4F4F4;
+    border-radius: 20px;
+    padding: 0px 20px 0px 15px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.comment input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.comment i {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.profile__img > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.profile, .aboutMe, .workTogether, .guest__log-title {
+    font-size: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+
