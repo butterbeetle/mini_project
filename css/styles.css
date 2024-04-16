@@ -34,9 +34,9 @@ html {
 
 .page {
   font-size: 40px;
-  min-height: 800px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+
 
   scroll-snap-align: center;
   scroll-snap-stop: always;
@@ -92,10 +92,6 @@ html {
 
 /* 유나 수정 */
 
-.ver2 {
-  padding-top: 200px;
-}
-
 .profile_wrap{ 
   display: flex;
   /* grid-template-columns: repeat(3, 1fr); */
@@ -103,13 +99,15 @@ html {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  max-width: 150vh - 150px;
+  max-width: calc(150vh - 150px);
   margin: 0 auto;
+  padding-top: 100px;
 }
 
 .team_profile {
   display: flex;
-  width: calc(50vh -50px);
+  width: calc(50vh - 50px);
+  height: calc(50vh - 50px);
   justify-content: center;
 }
 
