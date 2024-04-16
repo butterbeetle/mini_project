@@ -2,6 +2,8 @@
 
 html,
 body {
+  box-sizing: border-box;
+  background-color: #e1af02;
   width: 100%;
   height: 100%;
 }
@@ -10,17 +12,37 @@ html {
   scroll-snap-type: y mandatory;
 }
 
-
-
+.header {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background-color: #e1af02;
+  text-align: center;
+  font-size: 65px;
+}
+@media screen and (min-width: 740px) {
+  .header {
+    font-size: 100px;
+  }
+}
+.wrap {
+  height: 100%;
+}
 .page {
-  background-color: #E1AF02;  
+  color: white;
+  font-size: 40px;
+  min-height: 800px;
+  width: 100%;
+  height: 100%;
+
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
-.main_img{
-  width: 610px;
-  height: 260px;
+.main_img {
+  width: 500px;
   margin: 0 auto;
-  padding-top: 250px;
+  padding-top: 150px;
   margin-bottom: 50px;
 }
 
@@ -35,25 +57,33 @@ html {
   margin: 0 auto;
 }
 
-.introduce_text{
+.introduce_text {
+  gap: 10px;
+  display: flex;
   margin: 0 50px;
   margin-top: 50px;
   font-size: 30px;
-  display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   color: #000;
 }
-
+@media screen and (min-width: 740px) {
+  .introduce_text {
+    flex-direction: row;
+  }
+}
 .introduce_text > p:first-child {
   font-size: 35px;
 }
 
-
 .introduce_text div p {
   line-height: 50px;
-  text-align: right;
+  text-align: center;
 }
 
-
-
-
+@media screen and (min-width: 740px) {
+  .introduce_text div p {
+    text-align: right;
+  }
+}
