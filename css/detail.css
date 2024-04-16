@@ -10,18 +10,26 @@ div {
     justify-content: space-between;
 }
 
-.btnbox button {
+.prev, .next {
     width: 3em;
-    height: 1.5em;
+    height: 2em;
     margin : 3px;
     background-color: white;
     border: 0px;
     font-weight: bolder;
 }
 
+.btnbox button {
+    background-color: white;
+    border: 0px;
+    border-radius: 10px;
+
+}
+
 
 .btnbox button:hover{
     background-color: #eee;
+    transition: all 1s;
 }
 
 .background {
