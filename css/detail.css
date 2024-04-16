@@ -41,7 +41,7 @@ body {
 }
 
 .left-left {
-    background-color: #D84746;
+    background-color: #BBA2FE;
     /* grid-row: span 1; */
     /* 왼쪽을 위아래로 1:1 비율로 나눔 */
     display: flex;
