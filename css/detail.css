@@ -4,26 +4,40 @@ div {
     padding: 0px;
 }
 
-.wrap {
+.btnbox {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.wrap button{
-    width: 5em;
-    height: 3em;
+.btnbox button {
+    width: 3em;
+    height: 1.5em;
     margin : 3px;
     background-color: white;
     border: 0px;
     font-weight: bolder;
 }
 
-.wrap button:hover{
+
+.btnbox button:hover{
     background-color: #eee;
 }
 
+.background {
+    width: 600vw;
+    transition: all 1s;
+    display: flex;
+    align-items: center;
+}
+
+
+.wrap {
+    width: 100vw;
+    float: left;
+}
+
 .container {
-    max-height: 1000px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
@@ -31,7 +45,6 @@ div {
 }
 
 .left {
-    max-height: 1000px;
     display: grid;
     grid-template-rows: 1fr 1fr;
     /* 왼쪽을 위아래로 1:1 비율로 나눔 */
