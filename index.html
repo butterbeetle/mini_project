@@ -33,41 +33,62 @@
         </div>
       </div>
       <!-- 유나 수정 -->
-      <div class="page ver2">
+      <div class="page">
         <ul class="profile_wrap">
           <li class="team_profile">
             <div class="circle">
-              <img src="./image/profile_img.png" alt="profile_img">
+              <img src="./image/profile_img.png" alt="profile_img" />
             </div>
           </li>
           <li class="team_profile">
             <div class="circle">
-              <img src="./image/profile_img.png" alt="profile_img">
+              <img src="./image/profile_img.png" alt="profile_img" />
             </div>
           </li>
           <li class="team_profile">
             <div class="circle">
-              <img src="./image/profile_img.png" alt="profile_img">
+              <img src="./image/profile_img.png" alt="profile_img" />
             </div>
           </li>
           <li class="team_profile">
             <div class="circle">
-              <img src="./image/profile_img.png" alt="profile_img">
+              <img src="./image/profile_img.png" alt="profile_img" />
             </div>
           </li>
           <li class="team_profile">
             <div class="circle">
-              <img src="./image/profile_img.png" alt="profile_img">
+              <img src="./image/profile_img.png" alt="profile_img" />
             </div>
           </li>
           <li class="team_profile">
             <div class="circle">
-              <img src="./image/profile_img.png" alt="profile_img">
+              <img src="./image/profile_img.png" alt="profile_img" />
             </div>
           </li>
         </ul>
-
       </div>
     </div>
+    <script>
+      window.onload = function () {
+        window.addEventListener("scroll", function () {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+          const pageHeight = window.innerHeight;
+          const pages = document.querySelectorAll(".page");
+
+          if (scrollTop >= pageHeight) {
+            pages.forEach(function (page) {
+              page.style.scrollSnapAlign = "none";
+              page.style.scrollSnapStop = "none";
+            });
+          } else {
+            pages.forEach(function (page) {
+              page.style.scrollSnapAlign = "center";
+              page.style.scrollSnapStop = "always";
+            });
+          }
+        });
+      };
+    </script>
   </body>
 </html>

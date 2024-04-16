@@ -36,10 +36,6 @@ html {
   font-size: 40px;
   width: 100%;
   height: 100vh;
-
-
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
 }
 
 .main_img {
@@ -89,10 +85,9 @@ html {
   text-align: center;
 }
 
-
 /* 유나 수정 */
 
-.profile_wrap{ 
+.profile_wrap {
   display: flex;
   /* grid-template-columns: repeat(3, 1fr); */
   /* min-height: 554px; */
@@ -112,30 +107,30 @@ html {
 }
 
 .team_profile:nth-child(1) {
-  background-color: #D84746;
+  background-color: #d84746;
 }
 
 .team_profile:nth-child(2) {
-  background-color: #618A58;
+  background-color: #618a58;
 }
 
 .team_profile:nth-child(3) {
-  background-color: #8FBCDB;
+  background-color: #8fbcdb;
 }
 
 .team_profile:nth-child(4) {
-  background-color: #BBA2FE;
+  background-color: #bba2fe;
 }
 
 .team_profile:nth-child(5) {
-  background-color: #E2C881;
+  background-color: #e2c881;
 }
 
 .team_profile:nth-child(6) {
   background-color: #288292;
 }
 
-.circle{
+.circle {
   position: relative;
   width: 100%;
   border-radius: 50%;
@@ -159,7 +154,7 @@ html {
 
 .circle:hover > img {
   transform: scale(1.2);
-  transition: 0.5s ease-in-out; 
+  transition: 0.5s ease-in-out;
 }
 /*  */
 @media screen and (min-width: 740px) {
