@@ -45,6 +45,7 @@ div {
 }
 
 .left {
+    width: 50vw;
     display: grid;
     grid-template-rows: 1fr 1fr;
     /* 왼쪽을 위아래로 1:1 비율로 나눔 */
