@@ -6,38 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+        body,
+        div {
             margin: 0px;
+            padding: 0px;
         }
 
         .container {
-            height: 100vh;
+            max-height: 1000px;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            place-items: center;
             /* 왼쪽과 오른쪽을 1:1 비율로 나눔 */
         }
 
         .left {
+            max-height: 1000px;
             display: grid;
             grid-template-rows: 1fr 1fr;
             /* 왼쪽을 위아래로 1:1 비율로 나눔 */
+            border-right: 1.5px solid black;
+            /* 배경선 우 */
+        }
+
+        .left h1 {
+            margin-top: -0.1em;
+        }
+
+        .item-profile h1 {
+            margin-bottom: 2em;
         }
 
         .top {
             /* 왼쪽 위 영역 스타일 */
             display: grid;
             grid-template-columns: 1fr 1fr;
-            /* 왼쪽 위 영역을 두 개의 열로 나눔 */
+            /* 왼쪽 위 영역을 두 개의 행로 나눔 */
+            border-bottom: 1.5px solid black;
+            /* <!-- 배경선 하 --> */
+        }
+
+        .item-image {
+            background-image: url('https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-hunt_23-2149167099.jpg?t=st=1713178229~exp=1713181829~hmac=793e6fc20d0edad5efa447359c4d850b7051c7d64945e8afac5ba9f968a29a06&w=996');
+            background-size: cover;
+            background-position: center;
+            border-right: 1.5px solid black;
+            /* 배경선 우 */
+        }
+
+        .item-profile,
+        .item-about,
+        .item-together {
+            margin: 4vh;
         }
 
         .bottom {
+
             /* 왼쪽 아래 영역 스타일 */
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            /* 왼쪽 위 영역을 두 개의 열로 나눔 */
         }
 
         .right {
             display: grid;
-            grid-template-columns: 1fr 1fr;
             /* 오른쪽을 1:1 비율로 나눔 */
+        }
+
+        .tag {
+            line-height: 0.7;
+            margin-bottom: 3em;
+        }
+
+        .box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .left {
+                border-bottom: 1.5px solid black;
+            }
+
+            .left,
+            .right {
+                display: flex;
+                flex-direction: column;
+                border-right: 0px;
+                /* 배경선 우 */
+            }
+
         }
     </style>
 </head>
@@ -46,10 +108,42 @@
     <div class="container">
         <div class="left">
             <div class="top">
-                <div class="item">이미지</div>
-                <div class="item">PROFILE</div>
+                <div class="item-image">
+                </div>
+                <div class="item-profile">
+                    <h1>PROFILE</h1>
+                    <div class="tag">
+                        <h3>NAME</h3>
+                        <p>이름</p>
+                    </div>
+                    <div class="tag">
+                        <h3>E-MAIL</h3>
+                        <p>이메일 주소</p>
+                    </div>
+                    <div class="tag">
+                        <h3>BLOG</h3>
+                        <p>블로그 주소</p>
+                    </div>
+                </div>
             </div>
-            <div class="bottom">ABOUTME/TOGETHER</div>
+            <div class="bottom">
+                <div class="item-about">
+                    <h1>ABOUT ME</h1>
+                    <div class="box">
+                        <p>MBTI</p>
+                        <p>취미</p>
+                        <p>특징</p>
+                        <p>관심사</p>
+                    </div>
+
+                </div>
+                <div class="item-together">
+                    <h1>LET'S WORK TOGETHER</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore consequuntur iste eligendi quo
+                        ducimus? Ipsam voluptate id mollitia est, commodi repudiandae, voluptates odio at quibusdam ea,
+                        assumenda unde neque veniam?</p>
+                </div>
+            </div>
         </div>
         <div class="right">방명록</div>
     </div>
