@@ -53,7 +53,7 @@ html {
 .main_img {
   width: 400px;
   margin: 0 auto;
-  padding-top: 150px;
+  padding-top: 180px;
   margin-bottom: 10vh;
 }
 @media screen and (min-width: 740px) {
@@ -148,7 +148,7 @@ html {
 }
 
 .team_profile:nth-child(5) img {
-  top: 6%;
+  top: 8%;
 }
 
 .team_profile:nth-child(6) img {
@@ -161,11 +161,13 @@ html {
   display: block;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .team_name {
   margin: 3%;
-  font-size: 70%;
+  font-size: 68%;
+  position: absolute;
 
 }
 
@@ -175,8 +177,7 @@ html {
   border-radius: 50%;
   background-color: white;
   aspect-ratio: 1/1;
-  margin-top: 4%;
-  margin-left: 10%;
+  margin: 11% 10% 9% 10%;
 }
 
 .team_photo {
