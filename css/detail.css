@@ -259,9 +259,13 @@ img {
     margin-top: 5px;
 }
 
+.comment__box .comment {
+    background-color: #fff;
+    padding: 0 10px;
+}
+
 .comment span {
     height: 100%;
-    padding: 10px 0;
     line-height: 23px;
 }
 
