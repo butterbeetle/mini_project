@@ -25,7 +25,12 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  width: 500vw;
+  /*
+  넓이가 하드코딩 되어있음
+  3명을 표시할 경우 3 + 2(무한 루프를위한 양끝) = 500vw가 됨.
+  5명일 경우 5+2 = 700vw으로 변경할 것
+  */
+  width: 700vw;
 }
 .carousel-box {
   width: 100vw;
@@ -150,6 +155,7 @@ img {
 }
 
 .icon {
+  cursor: pointer;
   background-color: #f4f4f4;
   border-radius: 50%;
   width: 123px;
