@@ -53,7 +53,7 @@ html {
 .main_img {
   width: 400px;
   margin: 0 auto;
-  padding-top: 180px;
+  padding-top: calc(150px + 7vh);
   margin-bottom: 10vh;
 }
 @media screen and (min-width: 740px) {
