@@ -14,12 +14,6 @@ body {
     padding: 0px;
 }
 
-.wrapper {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
 .prev {
     position: absolute;
     left: 1vw;
@@ -30,20 +24,37 @@ body {
     left: 98vw;
 }
 
-.container {
+.carousel-wrapper {
+    width: 600vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.carousel-slide {
+    width: 600vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* white-space: nowrap; */
+    transition: all 0.1s;
+}
+
+.carousel {
     background-color: black;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 2.2fr;
     grid-template-rows: 4fr 6fr;
     gap: 2.5px;
+    float: left;
 }
 
 .left-left {
     background-color: #BBA2FE;
-    /* grid-row: span 1; */
-    /* 왼쪽을 위아래로 1:1 비율로 나눔 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +75,7 @@ img {
 }
 
 .profile__contents {
-    margin-top: 64px;
+    margin-top: 85px;
     display: flex;
     flex-direction: column;
     gap: 35px;
@@ -111,7 +122,9 @@ img {
 }
 
 .workTogether {
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
 }
 
 .workTogether > p {
@@ -119,7 +132,6 @@ img {
     font-weight: 400;
     margin-top: 50px;
     line-height: 40px;
-
 }
 
 .right {
