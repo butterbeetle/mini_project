@@ -125,7 +125,7 @@ html {
 }
 
 .team_profile:nth-child(3) {
-  background-color: #8FBCDB;
+  background-color: #8fbcd8;
 }
 
 .team_profile:nth-child(4) {
@@ -153,35 +153,30 @@ html {
 
 .team_profile:nth-child(6) img {
   top: 0%;
+  left: 11%;
 }
 /*-------------------------------*/
 
-.team_profile a {
+.team_profile a{
   display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+  width: 100%;
+  height: 100%;
 }
 
 .team_name {
-  font-size: 18px;
-  position: absolute;
-  top: 5px;
-  left: 3px;
+  margin: 3%;
+  font-size: 70%;
 
 }
 
 .circle {
   position: relative;
-  width: 100%;
+  width: 80%;
   border-radius: 50%;
   background-color: white;
   aspect-ratio: 1/1;
-  margin: 25px 40px;
-  box-sizing: border-box;
+  margin-top: 4%;
+  margin-left: 10%;
 }
 
 .team_photo {
@@ -193,12 +188,12 @@ html {
 
 .circle:hover {
   background-color: transparent;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .circle:hover .team_photo {
   transform: scale(1.2);
-  transition: 0.5s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 @media screen and (min-width: 740px) {
