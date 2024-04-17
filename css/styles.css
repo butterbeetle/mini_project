@@ -12,19 +12,31 @@ html {
   scroll-snap-type: y mandatory;
 }
 
+.inner_wrap{
+  width: calc(150vh - 225px);
+  height: 100%;
+  margin: 0 auto;
+}
+
 .header {
   position: fixed;
   width: 100%;
-  height: 100px;
+  height: 150px;
   background-color: #e1af02;
   text-align: center;
-  font-size: 65px;
+  font-size: 100px;
   z-index: 1;
+}
+
+.header_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 740px) {
   .header {
-    font-size: 100px;
+    font-size: 150px;
   }
 }
 
@@ -42,7 +54,7 @@ html {
   width: 400px;
   margin: 0 auto;
   padding-top: 150px;
-  margin-bottom: 50px;
+  margin-bottom: 10vh;
 }
 @media screen and (min-width: 740px) {
   .main_img {
@@ -61,14 +73,12 @@ html {
 }
 
 .introduce_text {
-  gap: 10px;
   display: flex;
   margin: 0 50px;
   margin-top: 50px;
   font-size: 30px;
   justify-content: space-between;
   flex-direction: column;
-  align-items: center;
   color: #000;
 }
 @media screen and (min-width: 740px) {
@@ -92,15 +102,15 @@ html {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  max-width: calc(150vh - 150px);
+  max-width: calc(150vh - 225px);
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 .team_profile {
   display: flex;
-  width: calc(50vh - 50px);
-  height: calc(50vh - 50px);
+  width: calc(50vh - 75px);
+  height: calc(50vh - 75px);
   justify-content: center;
   cursor: pointer;
   position: relative;
