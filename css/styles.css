@@ -15,16 +15,16 @@ html {
 .header {
   position: fixed;
   width: 100%;
-  height: 100px;
+  height: 150px;
   background-color: #e1af02;
   text-align: center;
-  font-size: 65px;
+  font-size: 100px;
   z-index: 1;
 }
 
 @media screen and (min-width: 740px) {
   .header {
-    font-size: 100px;
+    font-size: 150px;
   }
 }
 
@@ -89,21 +89,21 @@ html {
 
 .profile_wrap {
   display: flex;
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* min-height: 554px; */
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  max-width: calc(150vh - 150px);
+  max-width: calc(150vh - 225px);
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 .team_profile {
   display: flex;
-  width: calc(50vh - 50px);
-  height: calc(50vh - 50px);
+  width: calc(50vh - 75px);
+  height: calc(50vh - 75px);
   justify-content: center;
+  cursor: pointer;
+  position: relative;
 }
 
 .team_profile:nth-child(1) {
@@ -115,7 +115,7 @@ html {
 }
 
 .team_profile:nth-child(3) {
-  background-color: #8fbcdb;
+  background-color: #8FBCDB;
 }
 
 .team_profile:nth-child(4) {
@@ -130,21 +130,55 @@ html {
   background-color: #288292;
 }
 
+
+/* 이미지 크기가 조금씩 달라서 몇 개만 위치 수정 */
+.team_profile:nth-child(3) img {
+  top: 2%;
+  left: 13%;
+}
+
+.team_profile:nth-child(5) img {
+  top: 6%;
+}
+
+.team_profile:nth-child(6) img {
+  top: 0%;
+}
+/*-------------------------------*/
+
+.team_profile a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+}
+
+.team_name {
+  font-size: 18px;
+  position: absolute;
+  top: 5px;
+  left: 3px;
+
+}
+
 .circle {
   position: relative;
   width: 100%;
   border-radius: 50%;
   background-color: white;
   aspect-ratio: 1/1;
-  margin: 20px 40px;
+  margin: 25px 40px;
   box-sizing: border-box;
 }
 
-.circle img {
-  width: 90%;
+.team_photo {
+  width: 80%;
   position: absolute;
-  top: 1%;
-  left: 6%;
+  top: 8%;
+  left: 12%;
 }
 
 .circle:hover {
@@ -152,11 +186,11 @@ html {
   transition: 0.5s;
 }
 
-.circle:hover > img {
+.circle:hover .team_photo {
   transform: scale(1.2);
   transition: 0.5s ease-in-out;
 }
-/*  */
+
 @media screen and (min-width: 740px) {
   .introduce_text div p {
     text-align: right;
