@@ -59,9 +59,6 @@ body {
 }
 
 .left-left {
-  /* background-color: #bba2fe; */
-  /* grid-row: span 1; */
-  /* 왼쪽을 위아래로 1:1 비율로 나눔 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,28 +180,27 @@ img {
   transition: 0.2s ease-in-out;
 }
 
-.icon:nth-child(1):hover {
+/* .icon:nth-child(1):hover {
   background-color: #d84746;
-}
+} */
 
-.icon:nth-child(2):hover {
+.icon:nth-child(1):hover {
   background-color: #618a58;
 }
 
-.icon:nth-child(3):hover {
+.icon:nth-child(2):hover {
   background-color: #8fbcdb;
 }
 
-/* .icon:nth-child(4) {
+.icon:nth-child(3):hover {
   background-color: #bba2fe;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
-} */
+}
 
-.icon:nth-child(5):hover {
+.icon:nth-child(4):hover {
   background-color: #e2c881;
 }
 
-.icon:nth-child(6):hover {
+.icon:nth-child(5):hover {
   background-color: #288292;
 }
 
