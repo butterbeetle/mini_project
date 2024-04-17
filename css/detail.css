@@ -54,7 +54,7 @@ body {
 }
 
 .left-left {
-  background-color: #bba2fe;
+  /* background-color: #bba2fe; */
   /* grid-row: span 1; */
   /* 왼쪽을 위아래로 1:1 비율로 나눔 */
   display: flex;
@@ -172,39 +172,34 @@ img {
   cursor: pointer;
 }
 
-.icon:nth-child(1):hover {
-  background-color: #d84746;
+.icon:hover {
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
   transition: 0.2s ease-in-out;
+}
+
+.icon:nth-child(1):hover {
+  background-color: #d84746;
 }
 
 .icon:nth-child(2):hover {
   background-color: #618a58;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
-  transition: 0.2s ease-in-out;
 }
 
 .icon:nth-child(3):hover {
   background-color: #8fbcdb;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
-  transition: 0.2s ease-in-out;
 }
 
-.icon:nth-child(4) {
+/* .icon:nth-child(4) {
   background-color: #bba2fe;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .icon:nth-child(5):hover {
   background-color: #e2c881;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
-  transition: 0.2s ease-in-out;
 }
 
 .icon:nth-child(6):hover {
   background-color: #288292;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
-  transition: 0.2s ease-in-out;
 }
 
 .guest__log {
@@ -322,4 +317,28 @@ img {
   font-size: 40px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.red {
+  background-color: #d84746;
+}
+
+.green {
+  background-color: #618a58;
+}
+
+.skyblue {
+  background-color: #8fbcdb;
+}
+
+.violet {
+  background-color: #bba2fe;
+}
+
+.yellow {
+  background-color: #e2c881;
+}
+
+.blue {
+  background-color: #288292;
 }
