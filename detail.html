@@ -794,7 +794,6 @@
       const MEMBER = 4;
 
       const userData = await getUser(db);
-      console.log(userData);
       /*
       0 => 김승회
       
@@ -822,23 +821,20 @@
         // 각 사람의 comment__boxs HTML 가져오기
         const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
         const commentHTML = `
-
         <div class="comment__box">
-                      <div class="profile__img">
-                        <img
-                          src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
-                        />
-                      </div>
-                      <div class="user">
-                        <div class="comment">
-                          <span>${message}</span>
-                        </div>
-                        <div class="user-btn">
-                          <img src="./img/update.png" />
-                          <img src="./img/delete.png" />
-                        </div>
-                      </div>
-                    </div>`;
+          <div class="profile__img">
+            <img src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"/>
+          </div>
+          <div class="user">
+            <div class="comment">
+              <span>${message}</span>
+            </div>
+            <div class="user-btn">
+              <img src="./img/update.png" />
+              <img src="./img/delete.png" />
+            </div>
+          </div>
+        </div>`;
 
         // <div class="comment__box">
         //   <div class="profile__img">
@@ -902,6 +898,10 @@
           commentInputHTML[idx].value = "";
         });
       });
+    </script>
+    <script>
+      const commentsBox = document.querySelectorAll(".comment__boxs");
+      console.log(commentsBox);
     </script>
   </body>
 </html>
