@@ -814,6 +814,15 @@
         // 각 사람의 comment__boxs HTML 가져오기
         const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
         const commentHTML = `
+        <div id="user_${idx}_comment_${commentId}" class="comment__box">
+          <div class="profile__img">
+            <img
+              src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
+            />
+          </div>
+          <div class="user">
+            <div class="comment">
+              <span>${message}</span>
               <input
                 class="commentInput"
                 type="text"
@@ -826,10 +835,10 @@
               </button>
               </div>
               <div class="commnet-icons">
-                <button onClick="change(this)">
+                <button id="user_${idx}_comment_${commentId}" class="update-btn" onClick="change(this)">
                   <img src="./img/update.png" />
                 </button>
-                <button>
+                <button id="user_${idx}_comment_${commentId}" class="delete-btn">
                   <img src="./img/delete.png" />
                 </button>
               </div>
@@ -840,12 +849,11 @@
       };
 
       const removeComment = (userId, commentId) => {
-        const str = userId + "-" + commentId;
-        console.log(str);
         const tmpHTML = carouselBox[userId].querySelector(".comment__boxs");
-        console.log(tmpHTML);
-        const here = tmpHTML.querySelector("#2-2");
-        console.log(here);
+        const target = tmpHTML.querySelector(
+          `#user_${idx}_comment_${commentId}`
+        );
+        tmpHTML.removeChild(target);
       };
 
       // 저장한 개인 데이터를 순회
@@ -896,15 +904,15 @@
 
       // 읽어오는 시간 때문에...
       const deleteComment = async (buttonId) => {
-        const [userId, commentId] = buttonId.split("-");
-        // const tmp = personalData[userId].comments.filter(
-        //   (comment) => comment.id !== commentId
-        // );
+        const [a, userId, b, commentId] = buttonId.split("_");
+        const tmp = personalData[userId].comments.filter(
+          (comment) => comment.id !== commentId
+        );
 
-        // await setDoc(doc(db, `user`, `${userId}`), {
-        //   index: userId,
-        //   comments: [...tmp],
-        // });
+        await setDoc(doc(db, `user`, `${userId}`), {
+          index: userId,
+          comments: [...tmp],
+        });
 
         removeComment(userId, commentId);
       };
