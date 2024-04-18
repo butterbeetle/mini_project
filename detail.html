@@ -787,6 +787,7 @@
       personalData[0] = personalData[MEMBER];
       personalData[MEMBER + 1] = personalData[1];
 
+      // comment 창 생성 함수
       const createComment = (message, idx) => {
         // 각 사람의 comment__boxs HTML 가져오기
         const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
@@ -818,14 +819,14 @@
 
       // comment 저장
       const sendComment = async (db, idx, message) => {
+        // 시간은 있어야되나 없어야되나 생각해서 일단 넣었음.
+        // 시간 쓸거면 포맷팅은 또 따로해야함
         const tmp = {
           message,
           timestamp: Date.now(),
         };
-        console.log(personalData[idx].comments);
+
         personalData[idx].comments.push(tmp);
-        console.log(personalData[idx].comments);
-        // const userCollection = collection(db, `user/${idx}`, "comments");
 
         await setDoc(doc(db, `user`, `${idx}`), {
           index: idx,
@@ -835,28 +836,18 @@
         createComment(message, idx);
       };
 
+      // send 버튼과 input창 HTML 가져오기
       const commentSendHTML = document.querySelectorAll(".send");
       const commentInputHTML = document.querySelectorAll(".commentInput");
 
+      // 누구의 send를 눌렀는지 순회
       commentSendHTML.forEach((HTML, idx) => {
         HTML.addEventListener("click", async () => {
+          // 그 사람의 input창에 입력되어있는 message 가져오기
           const message = commentInputHTML[idx].value;
           sendComment(db, idx, message);
         });
       });
-      // commentInputHTML.addEventListener("click", () => {
-      //   console.log("send click");
-      // });
-      // document
-      //   .querySelector(".send")
-      //   .addEventListener("click", async function () {
-      //     let doc = {
-      //       name: document.querySelector(".commentName").innerText.slice(0, 3),
-      //       comment: document.querySelector(".commentInput").value,
-      //     };
-      //     await addDoc(collection(db, "comments"), doc);
-      //     window.location.reload();
-      //   });
     </script>
   </body>
 </html>
