@@ -828,13 +828,14 @@
             <div class="comment">
               <span>${message}</span>
               <input
-                class="commentInput"
+                id="user_${userId}_comment_${commentId}"
+                class="commentInput update"
                 type="text"
                 placeholder="댓글을 남겨주세요."
                 max="50"
                 value="${message}"
               />
-              <button id="user_${userId}_comment_${commentId}" class="send">
+              <button id="user_${userId}_comment_${commentId}" class="send update">
                 <i class="fa-regular fa-paper-plane"></i>
               </button>
               </div>
@@ -882,6 +883,8 @@
         });
 
         createChild(message, userId, commentId);
+
+        buttonHandler(300);
       };
       // comment 삭제(FIREBASE)
       const deleteComment = async (buttonId) => {
@@ -894,8 +897,30 @@
           index: userId,
           comments: [...tmp],
         });
-
+        personalData[userId].comments = [...tmp];
         deleteChild(userId, commentId);
+
+        buttonHandler(300);
+      };
+      // comment 수정(FIREBASE)
+      const updateComment = async (message, userId, commentId) => {
+        // console.log(
+        //   `userId:${userId} commentId:${commentId} message:${message}`
+        // );
+        const tmp = personalData[userId].comments.map((data) => {
+          if (+data.id === +commentId) {
+            data.message = message;
+          }
+          return data;
+        });
+
+        await setDoc(doc(db, `user`, `${userId}`), {
+          index: userId,
+          comments: [...tmp],
+        });
+
+        personalData[userId].comments = [...tmp];
+        buttonHandler(300);
       };
 
       // 저장한 개인 데이터를 순회
@@ -911,17 +936,34 @@
         });
       });
 
-      // 읽어오는 시간 때문에...
-      setTimeout(() => {
-        const deleteButtons = document.querySelectorAll(".delete-btn");
-        deleteButtons.forEach((button) => {
-          const buttonId = button.id;
-          button.addEventListener("click", () => {
-            deleteComment(buttonId);
+      // 읽어오는 시간 때문에 1초 후에 제대로 동작함....
+      const buttonHandler = (sec) => {
+        setTimeout(() => {
+          // 삭제용
+          const deleteButtons = document.querySelectorAll(".delete-btn");
+          deleteButtons.forEach((button) => {
+            const buttonId = button.id;
+            button.addEventListener("click", () => {
+              deleteComment(buttonId);
+            });
           });
-        });
-      }, 1000);
+          // 업뎃용
+          const commentUpdateHTML = document.querySelectorAll(".send.update");
+          const commentUpdateInputHTML = document.querySelectorAll(
+            ".commentInput.update"
+          );
 
+          commentUpdateHTML.forEach((HTML, htmlIdx) => {
+            const [a, userId, b, commentId] = HTML.id.split("_");
+            HTML.addEventListener("click", () => {
+              const message = commentUpdateInputHTML[htmlIdx].value;
+              updateComment(message, userId, commentId);
+              // HTML 변경 코드 들어갈 곳
+            });
+          });
+        }, sec);
+      };
+      buttonHandler(1000);
       // 누구의 send를 눌렀는지 순회
       commentSendHTML.forEach((HTML, userId) => {
         HTML.addEventListener("click", async () => {
