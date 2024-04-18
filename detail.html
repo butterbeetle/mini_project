@@ -859,7 +859,10 @@
         const target = tmpHTML.querySelector(
           `#user_${idx}_comment_${commentId}`
         );
-        tmpHTML.removeChild(target);
+        // console.log(target);
+        // bug
+        // 지금 양끝을 서로 하드코딩으로 넣어놔서 양끝에서 삭제하려고하면 이미 삭제했기 때문에 삭제가 안댐.
+        if (target != null) tmpHTML.removeChild(target);
       };
 
       // comment 저장(FIREBASE)
@@ -867,7 +870,7 @@
         const length = personalData[userId].comments.length;
         let commentId = 1;
         if (length > 0)
-          commentId = personalData[userId].comments[length - 1].id + 1;
+          commentId = +personalData[userId].comments[length - 1].id + 1;
         // console.log(length, commentId);
         const tmp = {
           id: commentId,
@@ -885,7 +888,7 @@
 
         createChild(message, userId, commentId);
 
-        buttonHandler(300);
+        buttonHandler(100);
       };
       // comment 삭제(FIREBASE)
       const deleteComment = async (buttonId) => {
@@ -901,7 +904,7 @@
         personalData[userId].comments = [...tmp];
         deleteChild(userId, commentId);
 
-        buttonHandler(300);
+        buttonHandler(100);
       };
       // comment 수정(FIREBASE)
       const updateComment = async (message, userId, commentId) => {
@@ -921,7 +924,6 @@
         });
 
         personalData[userId].comments = [...tmp];
-        buttonHandler(300);
       };
 
       // 저장한 개인 데이터를 순회
