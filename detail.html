@@ -887,7 +887,7 @@
         const tmp = personalData[userId].comments.filter(
           (comment) => +comment.id !== +commentId
         );
-        console.log(tmp);
+        // console.log(tmp);
         await setDoc(doc(db, `user`, `${userId}`), {
           index: userId,
           comments: [...tmp],
