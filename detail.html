@@ -846,6 +846,7 @@
           // 그 사람의 input창에 입력되어있는 message 가져오기
           const message = commentInputHTML[idx].value;
           sendComment(db, idx, message);
+          commentInputHTML[idx].value = "";
         });
       });
     </script>
