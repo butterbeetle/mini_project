@@ -789,7 +789,7 @@
       // 페이지 클릭 시 새 페이지로 이동 하는식이 아니라 캐러셀로 되어있어서 한번에 받아오고 한번에 처리해야 되기때문
       personalData.forEach((data, idx) => {
         // 각 사람의 guest__log HTML 가져오기
-        const tmpHTML = carouselBox[idx].querySelector(".guest__log");
+        const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
         // 개인이 가지고 있는 코멘트 마다 comment_box 만들기
         data.comments.forEach((comment) => {
           const commentHTML = `
@@ -807,11 +807,17 @@
           tmpHTML.insertAdjacentHTML("afterbegin", commentHTML);
         });
       });
-      // document
-      //   .querySelector(".guest__log")
-      //   .insertAdjacentHTML("afterbegin", tmp);
-      // });
 
+      const commentInputHTML = document.querySelectorAll(".send");
+      console.log(commentInputHTML);
+      commentInputHTML.forEach((HTML, idx) => {
+        HTML.addEventListener("click", async () => {
+          console.log(idx, "CLICK");
+        });
+      });
+      // commentInputHTML.addEventListener("click", () => {
+      //   console.log("send click");
+      // });
       // document
       //   .querySelector(".send")
       //   .addEventListener("click", async function () {
@@ -825,3 +831,4 @@
     </script>
   </body>
 </html>
+gi
