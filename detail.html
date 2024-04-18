@@ -1383,6 +1383,7 @@
       const icon = document.querySelectorAll(".icon");
       const nextBtn = document.querySelector(".next");
       const prevBtn = document.querySelector(".prev");
+      const urlParams = new URL(location.href).searchParams;
 
       // 원하는 배경색 헥스코드로 넣기
       const myBackGroundColor = [
@@ -1435,8 +1436,13 @@
 
 
       const init = () => {
+        idx = urlParams.get('page');
+        if(idx !== "1"){
+          slide(idx);
+        }
         setBackGroundColor();
         setTranslate();
+
       };
 
       init();
