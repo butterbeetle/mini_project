@@ -773,19 +773,24 @@
 
       5 => 홍유나
        */
+
+      // 개인 데이터 저장할 배열
       const personalData = new Array(MEMBER + 2);
+
+      // userData 순회하면서 개인 데이터 저장
       userData.forEach((data, idx) => {
         personalData[data.index] = data;
       });
+      // 무한 슬라이드를위해 마지막은 맨앞으로, 맨앞은 마지막으로
       personalData[0] = personalData[MEMBER];
       personalData[MEMBER + 1] = personalData[1];
-      // console.log(personalData);
-      // console.log(carouselBox);
+
+      // 저장한 개인 데이터를 순회
+      // 페이지 클릭 시 새 페이지로 이동 하는식이 아니라 캐러셀로 되어있어서 한번에 받아오고 한번에 처리해야 되기때문
       personalData.forEach((data, idx) => {
-        // console.log(data);
-        // console.log(carouselBox[idx]);
+        // 각 사람의 guest__log HTML 가져오기
         const tmpHTML = carouselBox[idx].querySelector(".guest__log");
-        // console.log(tmpHTML);
+        // 개인이 가지고 있는 코멘트 마다 comment_box 만들기
         data.comments.forEach((comment) => {
           const commentHTML = `
         <div class="comment__box">
@@ -798,7 +803,7 @@
             </div>
           </div>
         </div>`;
-          // console.log(commentHTML);
+          // 만든 comment_box를 위에서 가져온 guest__log에 넣기
           tmpHTML.insertAdjacentHTML("afterbegin", commentHTML);
         });
       });
@@ -817,24 +822,6 @@
       //     await addDoc(collection(db, "comments"), doc);
       //     window.location.reload();
       //   });
-
-      // docs.forEach((doc) => {
-      //   let row = doc.data();
-      //   let temp_html = `<div class="comment__box">
-      //                   <div class="profile__img">
-      //                       <img
-      //                           src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png">
-      //                   </div>
-      //                   <div class="user">
-      //                       <div class="comment">
-      //                           <span>${row["comment"]}</span>
-      //                       </div>
-      //                   </div>
-      //               </div>`;
-      //   document
-      //     .querySelector(".guest__log")
-      //     .insertAdjacentHTML("afterbegin", temp_html);
-      // });
     </script>
   </body>
 </html>
