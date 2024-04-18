@@ -115,9 +115,9 @@ html {
   width: calc(50vh - 75px);
   height: calc(50vh - 75px);
   justify-content: center;
-  cursor: pointer;
   position: relative;
 }
+
 
 .team_profile:nth-child(1) {
   background-color: #d84746;
@@ -125,18 +125,22 @@ html {
 
 .team_profile:nth-child(2) {
   background-color: #618a58;
+  cursor: pointer;
 }
 
 .team_profile:nth-child(3) {
   background-color: #8fbcd8;
+  cursor: pointer;
 }
 
 .team_profile:nth-child(4) {
   background-color: #bba2fe;
+  cursor: pointer;
 }
 
 .team_profile:nth-child(5) {
   background-color: #e2c881;
+  cursor: pointer;
 }
 
 .team_profile:nth-child(6) {
@@ -145,6 +149,11 @@ html {
 
 
 /* 이미지 크기가 조금씩 달라서 몇 개만 위치 수정 */
+.team_profile:nth-child(1) img {
+  top: 11%;
+  transform: rotateZ(10deg);
+}
+
 .team_profile:nth-child(3) img {
   top: 2%;
   left: 13%;
@@ -155,8 +164,8 @@ html {
 }
 
 .team_profile:nth-child(6) img {
-  top: 0%;
-  left: 11%;
+  top: 12%;
+  transform: rotateZ(-5deg);
 }
 /*-------------------------------*/
 
