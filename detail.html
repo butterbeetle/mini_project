@@ -863,7 +863,8 @@
       // comment 저장(FIREBASE)
       const sendComment = async (db, userId, message) => {
         const length = personalData[userId].comments.length;
-        const commentId = personalData[userId].comments[length - 1].id + 1;
+        const commentId =
+          personalData[userId].comments[length - 1]?.id || 0 + 1;
         const tmp = {
           id: commentId,
           message,
@@ -886,6 +887,7 @@
         const tmp = personalData[userId].comments.filter(
           (comment) => +comment.id !== +commentId
         );
+        console.log(tmp);
         await setDoc(doc(db, `user`, `${userId}`), {
           index: userId,
           comments: [...tmp],
