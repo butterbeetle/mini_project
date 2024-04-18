@@ -99,7 +99,7 @@
                       <span class="commentName">김승회님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
@@ -196,7 +196,7 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
@@ -295,7 +295,7 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
@@ -394,7 +394,7 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
@@ -493,7 +493,7 @@
                       <span class="commentName">김승회님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
@@ -594,7 +594,7 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
@@ -786,7 +786,7 @@
 
       // send 버튼과 input창 HTML 가져오기
       const commentSendHTML = document.querySelectorAll(".send.main");
-      const commentInputHTML = document.querySelectorAll(".commentInput");
+      const commentInputHTML = document.querySelectorAll(".commentInput.main");
 
       const MEMBER = 4;
       const userData = await getUser(db);
@@ -834,12 +834,12 @@
                 max="50"
                 value="${message}"
               />
-              <button class="send">
+              <button id="user_${userId}_comment_${commentId}" class="send">
                 <i class="fa-regular fa-paper-plane"></i>
               </button>
               </div>
               <div class="commnet-icons">
-                <button id="user_${userId}_comment_${commentId}" class="update-btn" onClick="change(this)">
+                <button class="update-btn" onClick="change(this)">
                   <img src="./img/update.png" />
                 </button>
                 <button id="user_${userId}_comment_${commentId}" class="delete-btn">
@@ -863,8 +863,10 @@
       // comment 저장(FIREBASE)
       const sendComment = async (db, userId, message) => {
         const length = personalData[userId].comments.length;
-        const commentId =
-          personalData[userId].comments[length - 1]?.id || 0 + 1;
+        let commentId = 1;
+        if (length > 0)
+          commentId = personalData[userId].comments[length - 1].id + 1;
+        console.log(length, commentId);
         const tmp = {
           id: commentId,
           message,
