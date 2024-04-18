@@ -271,6 +271,7 @@ img {
 .comment__box .comment {
   background-color: #fff;
   padding: 0 10px;
+  min-height: 20px
 }
 
 .comment span {

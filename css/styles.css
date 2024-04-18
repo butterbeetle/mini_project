@@ -72,13 +72,12 @@ html {
 }
 
 .introduce {
-  max-width: 1440px;
+  max-width: calc(150vh - 225px);
   margin: 0 auto;
 }
 
 .introduce_text {
   display: flex;
-  margin: 0 50px;
   margin-top: 50px;
   font-size: 30px;
   justify-content: space-between;
