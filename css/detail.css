@@ -243,7 +243,7 @@ img {
   background-color: white;
   border-radius: 20px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 11px;
   box-sizing: border-box;
   margin-bottom: 10px;
@@ -263,7 +263,6 @@ img {
 }
 .user-btn {
   display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 .user-btn img {
@@ -291,7 +290,7 @@ img {
 .comment__box .comment {
   background-color: #fff;
   padding: 0 10px;
-  min-height: 20px
+  min-height: 20px;
 }
 
 .comment span {
