@@ -145,23 +145,19 @@
                     <div class="aboutMe__tags">
                       <div class="aboutMe__tag">
                         <div class="tag">INFP</div>
-                        <div class="tag">특징</div>
+                        <div class="tag">올빼미형 인간</div>
                       </div>
                       <div class="aboutMe__tag">
-                        <div class="tag">취미</div>
-                        <div class="tag">관심사</div>
+                        <div class="tag">노래 듣기</div>
+                        <div class="tag">고양이 구경하기</div>
                       </div>
                     </div>
                   </div>
                   <div class="workTogether">
                     <span>Let's work together</span>
                     <p>
-                      진짜 음식물이 그에서 반장은 오늘날이며, 당합니다. 피식
-                      물품을 같이 칼날이 가라. 없은 내지 수를, 하게 정도가 삶에
-                      체외가 된 강하던 있어 기쁘어요. 그 대통령은 훌륭하다
-                      늘린다면 생각을 선진이 채우다. 판 부정을 딴 음대가 사노
-                      한편은 건치도 있은데. 인한 생산하면서 마음으로 접던
-                      현실에, 우리에서 요즈음에 너에 사찰을, 시작하다.
+                      먼저 앞장서서 사람들을 이끌거나 아이디어를 내는 스타일은 아니지만 항상 팀원들의 의견을 존중하고 경청하고 있습니다!
+                      프로젝트를 진행할 때 잘하지는 못하더라도 늘 최선을 다하려고 합니다 (〃⌒▽⌒〃)ゝ
                     </p>
                   </div>
                 </div>
@@ -193,7 +189,7 @@
                       <img src="img/yunahong.png" />
                     </div>
                     <div class="user input">
-                      <span class="commentName">복예린님에게 한마디</span>
+                      <span class="commentName">홍유나님에게 한마디</span>
                       <div class="comment">
                         <input
                           class="commentInput main"
@@ -292,7 +288,7 @@
                       <img src="img/junheoklee.png" />
                     </div>
                     <div class="user input">
-                      <span class="commentName">복예린님에게 한마디</span>
+                      <span class="commentName">이준혁님에게 한마디</span>
                       <div class="comment">
                         <input
                           class="commentInput main"
@@ -591,7 +587,7 @@
                       />
                     </div>
                     <div class="user input">
-                      <span class="commentName">복예린님에게 한마디</span>
+                      <span class="commentName">홍유나님에게 한마디</span>
                       <div class="comment">
                         <input
                           class="commentInput main"
@@ -866,14 +862,12 @@
         const target = tmpHTML.querySelector(
           `#user_${idx}_comment_${commentId}`
         );
-        // console.log(target);
-        // bug
-        // 지금 양끝을 서로 하드코딩으로 넣어놔서 양끝에서 삭제하려고하면 이미 삭제했기 때문에 삭제가 안댐.
         if (target != null) tmpHTML.removeChild(target);
       };
 
       // comment 저장(FIREBASE)
       const sendComment = async (db, userId, message) => {
+        
         const length = personalData[userId].comments.length;
         let commentId = 1;
         if (length > 0)
