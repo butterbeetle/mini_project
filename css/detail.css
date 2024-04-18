@@ -30,7 +30,7 @@ body {
   3명을 표시할 경우 3 + 2(무한 루프를위한 양끝) = 500vw가 됨.
   5명일 경우 5+2 = 700vw으로 변경할 것
   */
-  width: 700vw;
+  width: 600vw;
 }
 .carousel-box {
   width: 100vw;
@@ -125,16 +125,16 @@ img {
 }
 
 .workTogether {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 .workTogether > p {
-    font-size: 22px;
-    font-weight: 400;
-    margin-top: 50px;
-    line-height: 40px;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 50px;
+  line-height: 40px;
 }
 
 .right {
