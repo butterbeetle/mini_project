@@ -286,22 +286,6 @@
                 <div class="guest__log">
                   <div class="comment__boxs">
                     <!--Comment 창 들어갈 곳-->
-                    <div class="comment__box">
-                      <div class="profile__img">
-                        <img
-                          src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
-                        />
-                      </div>
-                      <div class="user">
-                        <div class="comment">
-                          <span>TestTestTestTestTestTestTest</span>
-                        </div>
-                        <div class="user-btn">
-                          <img src="./img/update.png" />
-                          <img src="./img/delete.png" />
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   <div class="gest__log-input">
                     <div class="profile__img">
@@ -817,11 +801,11 @@
       personalData[MEMBER + 1] = personalData[1];
 
       // comment 창 생성 함수
-      const createComment = (message, idx) => {
+      const createComment = (message, idx, commentId) => {
         // 각 사람의 comment__boxs HTML 가져오기
         const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
         const commentHTML = `
-        <div class="comment__box">
+        <div id="${idx}-${commentId}" class="comment__box">
           <div class="profile__img">
             <img src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"/>
           </div>
@@ -830,29 +814,26 @@
               <span>${message}</span>
             </div>
             <div class="user-btn">
-              <img src="./img/update.png" />
+              <div id="${idx}-${commentId}" class="update-btn">
+                <img src="./img/update.png" />
+              </div>
+              <div id="${idx}-${commentId}" class="delete-btn">
               <img src="./img/delete.png" />
+              </div>
             </div>
           </div>
         </div>`;
-
-        // <div class="comment__box">
-        //   <div class="profile__img">
-        //     <img src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png">
-        //   </div>
-        //   <div class="user">
-        //     <div class="comment">
-        //       <span>${message}</span>
-        //     </div>
-        //     <div class="commnet-icons">
-        //       <button><img src="./img/update.png" alt=""></button>
-        //       <button><img src="./img/delete.png" alt=""></button>
-        //     </div>
-        //   </div>
-        // </div>`;
-
         // 만든 comment_box를 위에서 가져온 guest__log에 넣기
         tmpHTML.insertAdjacentHTML("afterbegin", commentHTML);
+      };
+
+      const removeComment = (userId, commentId) => {
+        const str = userId + "-" + commentId;
+        console.log(str);
+        const tmpHTML = carouselBox[userId].querySelector(".comment__boxs");
+        console.log(tmpHTML);
+        const here = tmpHTML.querySelector("#2-2");
+        console.log(here);
       };
 
       // 저장한 개인 데이터를 순회
@@ -860,9 +841,11 @@
       personalData.forEach((data, idx) => {
         // 개인이 가지고 있는 코멘트 마다 comment_box 만들기
         data.comments.forEach((data) => {
+          // console.log("Data", data);
           const message = data.message;
+          const commentId = data.id;
           // 각 사람의 comment__boxs HTML 가져오기
-          createComment(message, idx);
+          createComment(message, idx, commentId);
         });
       });
 
@@ -898,10 +881,31 @@
           commentInputHTML[idx].value = "";
         });
       });
-    </script>
-    <script>
-      const commentsBox = document.querySelectorAll(".comment__boxs");
-      console.log(commentsBox);
+
+      // 읽어오는 시간 때문에...
+      const deleteComment = async (buttonId) => {
+        const [userId, commentId] = buttonId.split("-");
+        // const tmp = personalData[userId].comments.filter(
+        //   (comment) => comment.id !== commentId
+        // );
+
+        // await setDoc(doc(db, `user`, `${userId}`), {
+        //   index: userId,
+        //   comments: [...tmp],
+        // });
+
+        removeComment(userId, commentId);
+      };
+
+      setTimeout(() => {
+        const deleteButtons = document.querySelectorAll(".delete-btn");
+        deleteButtons.forEach((button) => {
+          const buttonId = button.id;
+          button.addEventListener("click", () => {
+            deleteComment(buttonId);
+          });
+        });
+      }, 1000);
     </script>
   </body>
 </html>
