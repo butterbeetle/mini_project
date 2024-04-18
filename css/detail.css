@@ -256,6 +256,11 @@ img {
   width: 95%;
   margin-left: 10px;
 }
+.input {
+  flex-direction: column;
+  align-items: normal;
+  justify-content: normal;
+}
 .user-btn {
   display: flex;
   flex-direction: column;
