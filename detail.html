@@ -738,8 +738,9 @@
         setBackGroundColor();
       });
 
-      function change(e) {
+      function change(e, flag = 0) {
         let parent = e.parentElement.previousElementSibling;
+        if (flag) parent = e;
         if (parent.className === "comment") {
           let children = (parent.className += " change");
         } else {
@@ -961,6 +962,10 @@
               const message = commentUpdateInputHTML[htmlIdx].value;
               updateComment(message, userId, commentId);
               // HTML 변경 코드 들어갈 곳
+              HTML.previousElementSibling.previousElementSibling.innerHTML =
+                message;
+
+              change(HTML.parentElement, 1);
             });
           });
         }, sec);
