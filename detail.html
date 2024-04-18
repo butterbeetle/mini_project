@@ -99,12 +99,12 @@
                       <span class="commentName">김승회님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
                         />
-                        <button class="send">
+                        <button class="send main">
                           <i class="fa-regular fa-paper-plane"></i>
                         </button>
                       </div>
@@ -196,12 +196,12 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
                         />
-                        <button class="send">
+                        <button class="send main">
                           <i class="fa-regular fa-paper-plane"></i>
                         </button>
                       </div>
@@ -295,12 +295,12 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
                         />
-                        <button class="send">
+                        <button class="send main">
                           <i class="fa-regular fa-paper-plane"></i>
                         </button>
                       </div>
@@ -394,12 +394,12 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
                         />
-                        <button class="send">
+                        <button class="send main">
                           <i class="fa-regular fa-paper-plane"></i>
                         </button>
                       </div>
@@ -493,12 +493,12 @@
                       <span class="commentName">김승회님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
                         />
-                        <button class="send">
+                        <button class="send main">
                           <i class="fa-regular fa-paper-plane"></i>
                         </button>
                       </div>
@@ -594,12 +594,12 @@
                       <span class="commentName">복예린님에게 한마디</span>
                       <div class="comment">
                         <input
-                          class="commentInput"
+                          class="commentInput main"
                           type="text"
                           placeholder="댓글을 남겨주세요."
                           max="50"
                         />
-                        <button class="send">
+                        <button class="send main">
                           <i class="fa-regular fa-paper-plane"></i>
                         </button>
                       </div>
@@ -738,8 +738,9 @@
         setBackGroundColor();
       });
 
-      function change(e) {
+      function change(e, flag = 0) {
         let parent = e.parentElement.previousElementSibling;
+        if (flag) parent = e;
         if (parent.className === "comment") {
           let children = (parent.className += " change");
         } else {
@@ -784,8 +785,11 @@
         return userData;
       };
 
-      const MEMBER = 4;
+      // send 버튼과 input창 HTML 가져오기
+      const commentSendHTML = document.querySelectorAll(".send.main");
+      const commentInputHTML = document.querySelectorAll(".commentInput.main");
 
+      const MEMBER = 4;
       const userData = await getUser(db);
       /*
       0 => 김승회
@@ -805,16 +809,17 @@
       userData.forEach((data, idx) => {
         personalData[data.index] = data;
       });
+
       // 무한 슬라이드를위해 마지막은 맨앞으로, 맨앞은 마지막으로
       personalData[0] = personalData[MEMBER];
       personalData[MEMBER + 1] = personalData[1];
 
-      // comment 창 생성 함수
-      const createComment = (message, idx, commentId) => {
+      // comment 생성(HTML)
+      const createChild = (message, userId, commentId) => {
         // 각 사람의 comment__boxs HTML 가져오기
-        const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
+        const tmpHTML = carouselBox[userId].querySelector(".comment__boxs");
         const commentHTML = `
-        <div id="user_${idx}_comment_${commentId}" class="comment__box">
+        <div id="user_${userId}_comment_${commentId}" class="comment__box">
           <div class="profile__img">
             <img
               src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
@@ -824,21 +829,22 @@
             <div class="comment">
               <span>${message}</span>
               <input
-                class="commentInput"
+                id="user_${userId}_comment_${commentId}"
+                class="commentInput update"
                 type="text"
                 placeholder="댓글을 남겨주세요."
                 max="50"
                 value="${message}"
               />
-              <button class="send">
+              <button id="user_${userId}_comment_${commentId}" class="send update">
                 <i class="fa-regular fa-paper-plane"></i>
               </button>
               </div>
               <div class="commnet-icons">
-                <button id="user_${idx}_comment_${commentId}" class="update-btn" onClick="change(this)">
+                <button class="update-btn" onClick="change(this)">
                   <img src="./img/update.png" />
                 </button>
-                <button id="user_${idx}_comment_${commentId}" class="delete-btn">
+                <button id="user_${userId}_comment_${commentId}" class="delete-btn">
                   <img src="./img/delete.png" />
                 </button>
               </div>
@@ -847,8 +853,8 @@
         // 만든 comment_box를 위에서 가져온 guest__log에 넣기
         tmpHTML.insertAdjacentHTML("afterbegin", commentHTML);
       };
-
-      const removeComment = (userId, commentId) => {
+      // comment 삭제(HTML)
+      const deleteChild = (userId, commentId) => {
         const tmpHTML = carouselBox[userId].querySelector(".comment__boxs");
         const target = tmpHTML.querySelector(
           `#user_${idx}_comment_${commentId}`
@@ -856,76 +862,126 @@
         tmpHTML.removeChild(target);
       };
 
-      // 저장한 개인 데이터를 순회
-      // 페이지 클릭 시 새 페이지로 이동 하는식이 아니라 캐러셀로 되어있어서 한번에 받아오고 한번에 처리해야 되기때문
-      personalData.forEach((data, idx) => {
-        // 개인이 가지고 있는 코멘트 마다 comment_box 만들기
-        data.comments.forEach((data) => {
-          // console.log("Data", data);
-          const message = data.message;
-          const commentId = data.id;
-          // 각 사람의 comment__boxs HTML 가져오기
-          createComment(message, idx, commentId);
-        });
-      });
-
-      // comment 저장
-      const sendComment = async (db, idx, message) => {
-        // 시간은 있어야되나 없어야되나 생각해서 일단 넣었음.
-        // 시간 쓸거면 포맷팅은 또 따로해야함
+      // comment 저장(FIREBASE)
+      const sendComment = async (db, userId, message) => {
+        const length = personalData[userId].comments.length;
+        let commentId = 1;
+        if (length > 0)
+          commentId = personalData[userId].comments[length - 1].id + 1;
+        // console.log(length, commentId);
         const tmp = {
+          id: commentId,
           message,
           timestamp: Date.now(),
         };
 
-        personalData[idx].comments.push(tmp);
+        personalData[userId].comments.push(tmp);
 
-        await setDoc(doc(db, `user`, `${idx}`), {
-          index: idx,
-          comments: [...personalData[idx].comments],
+        await setDoc(doc(db, `user`, `${userId}`), {
+          id: commentId,
+          index: userId,
+          comments: [...personalData[userId].comments],
         });
 
-        createComment(message, idx);
+        createChild(message, userId, commentId);
+
+        buttonHandler(300);
       };
-
-      // send 버튼과 input창 HTML 가져오기
-      const commentSendHTML = document.querySelectorAll(".send");
-      const commentInputHTML = document.querySelectorAll(".commentInput");
-
-      // 누구의 send를 눌렀는지 순회
-      commentSendHTML.forEach((HTML, idx) => {
-        HTML.addEventListener("click", async () => {
-          // 그 사람의 input창에 입력되어있는 message 가져오기
-          const message = commentInputHTML[idx].value;
-          sendComment(db, idx, message);
-          commentInputHTML[idx].value = "";
-        });
-      });
-
-      // 읽어오는 시간 때문에...
+      // comment 삭제(FIREBASE)
       const deleteComment = async (buttonId) => {
         const [a, userId, b, commentId] = buttonId.split("_");
         const tmp = personalData[userId].comments.filter(
-          (comment) => comment.id !== commentId
+          (comment) => +comment.id !== +commentId
         );
+        // console.log(tmp);
+        await setDoc(doc(db, `user`, `${userId}`), {
+          index: userId,
+          comments: [...tmp],
+        });
+        personalData[userId].comments = [...tmp];
+        deleteChild(userId, commentId);
+
+        buttonHandler(300);
+      };
+      // comment 수정(FIREBASE)
+      const updateComment = async (message, userId, commentId) => {
+        // console.log(
+        //   `userId:${userId} commentId:${commentId} message:${message}`
+        // );
+        const tmp = personalData[userId].comments.map((data) => {
+          if (+data.id === +commentId) {
+            data.message = message;
+          }
+          return data;
+        });
 
         await setDoc(doc(db, `user`, `${userId}`), {
           index: userId,
           comments: [...tmp],
         });
 
-        removeComment(userId, commentId);
+        personalData[userId].comments = [...tmp];
+        buttonHandler(300);
       };
 
-      setTimeout(() => {
-        const deleteButtons = document.querySelectorAll(".delete-btn");
-        deleteButtons.forEach((button) => {
-          const buttonId = button.id;
-          button.addEventListener("click", () => {
-            deleteComment(buttonId);
-          });
+      // 저장한 개인 데이터를 순회
+      // 페이지 클릭 시 새 페이지로 이동 하는식이 아니라 캐러셀로 되어있어서 한번에 받아오고 한번에 처리해야 되기때문
+      personalData.forEach((data, userId) => {
+        // 개인이 가지고 있는 코멘트 마다 comment_box 만들기
+        data.comments.forEach((data) => {
+          const message = data.message;
+          const commentId = data.id;
+          // 각 사람의 comment__boxs HTML 가져오기
+          // console.log("forEach", message, userId, commentId);
+          createChild(message, userId, commentId);
         });
-      }, 1000);
+      });
+
+      // 읽어오는 시간 때문에 1초 후에 제대로 동작함....
+      // 새로 생성 시 생성된 댓글의 수정,삭제 버튼을 감지 못하기 때문에
+      // 함수를 새로 만들어 감지 할 수 있도록 함.
+      const buttonHandler = (sec) => {
+        setTimeout(() => {
+          // 삭제용
+          const deleteButtons = document.querySelectorAll(".delete-btn");
+          deleteButtons.forEach((button) => {
+            const buttonId = button.id;
+            button.addEventListener("click", () => {
+              deleteComment(buttonId);
+            });
+          });
+          // 업뎃용
+          const commentUpdateHTML = document.querySelectorAll(".send.update");
+          const commentUpdateInputHTML = document.querySelectorAll(
+            ".commentInput.update"
+          );
+
+          commentUpdateHTML.forEach((HTML, htmlIdx) => {
+            const [a, userId, b, commentId] = HTML.id.split("_");
+            HTML.addEventListener("click", () => {
+              const message = commentUpdateInputHTML[htmlIdx].value;
+              updateComment(message, userId, commentId);
+              // HTML 변경 코드 들어갈 곳
+              HTML.previousElementSibling.previousElementSibling.innerHTML =
+                message;
+
+              change(HTML.parentElement, 1);
+            });
+          });
+        }, sec);
+      };
+
+      buttonHandler(1000);
+      // 누구의 send를 눌렀는지 순회
+      commentSendHTML.forEach((HTML, userId) => {
+        HTML.addEventListener("click", async () => {
+          // 그 사람의 input창에 입력되어있는 message 가져오기
+          const message = commentInputHTML[userId].value;
+          // console.log(userId, message);
+          sendComment(db, userId, message);
+          commentInputHTML[userId].value = "";
+        });
+      });
     </script>
   </body>
 </html>
