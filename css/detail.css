@@ -241,7 +241,7 @@ img {
 .comment__box {
   width: 95%;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 20px;
   display: flex;
   align-items: flex-start;
   padding: 11px;
@@ -251,11 +251,26 @@ img {
 
 .user {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 95%;
   margin-left: 10px;
 }
-
+.user-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.user-btn img {
+  display: block;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+.user-btn img:hover {
+  transition: all 300ms;
+  scale: 1.1;
+}
 .comment {
   display: flex;
   align-items: center;

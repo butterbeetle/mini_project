@@ -87,7 +87,9 @@
                   <span>Say "Hello"<br />to our teammate</span>
                 </div>
                 <div class="guest__log">
-                  <div class="comment__boxs"></div>
+                  <div class="comment__boxs">
+                    <!--Comment 창 들어갈 곳-->
+                  </div>
 
                   <div class="gest__log-input">
                     <div class="profile__img">
@@ -183,7 +185,9 @@
                   <span>Say "Hello"<br />to our teammate</span>
                 </div>
                 <div class="guest__log">
-                  <div class="comment__boxs"></div>
+                  <div class="comment__boxs">
+                    <!--Comment 창 들어갈 곳-->
+                  </div>
                   <div class="gest__log-input">
                     <div class="profile__img">
                       <img src="img/yunahong.png" />
@@ -280,7 +284,25 @@
                   <span>Say "Hello"<br />to our teammate</span>
                 </div>
                 <div class="guest__log">
-                  <div class="comment__boxs"></div>
+                  <div class="comment__boxs">
+                    <!--Comment 창 들어갈 곳-->
+                    <div class="comment__box">
+                      <div class="profile__img">
+                        <img
+                          src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
+                        />
+                      </div>
+                      <div class="user">
+                        <div class="comment">
+                          <span>TestTestTestTestTestTestTest</span>
+                        </div>
+                        <div class="user-btn">
+                          <img src="./img/update.png" />
+                          <img src="./img/delete.png" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="gest__log-input">
                     <div class="profile__img">
                       <img src="img/junheoklee.png" />
@@ -377,7 +399,9 @@
                   <span>Say "Hello"<br />to our teammate</span>
                 </div>
                 <div class="guest__log">
-                  <div class="comment__boxs"></div>
+                  <div class="comment__boxs">
+                    <!--Comment 창 들어갈 곳-->
+                  </div>
                   <div class="gest__log-input">
                     <div class="profile__img">
                       <img src="img/yelinbok.png" />
@@ -474,7 +498,9 @@
                   <span>Say "Hello"<br />to our teammate</span>
                 </div>
                 <div class="guest__log">
-                  <div class="comment__boxs"></div>
+                  <div class="comment__boxs">
+                    <!--Comment 창 들어갈 곳-->
+                  </div>
                   <div class="gest__log-input">
                     <div class="profile__img">
                       <img src="img/seunghoekim.png" />
@@ -571,7 +597,9 @@
                   <span>Say "Hello"<br />to our teammate</span>
                 </div>
                 <div class="guest__log">
-                  <div class="comment__boxs"></div>
+                  <div class="comment__boxs">
+                    <!--Comment 창 들어갈 곳-->
+                  </div>
                   <div class="gest__log-input">
                     <div class="profile__img">
                       <img
@@ -762,9 +790,11 @@
         const userData = userSnap.docs.map((doc) => doc.data());
         return userData;
       };
+
       const MEMBER = 4;
 
       const userData = await getUser(db);
+      console.log(userData);
       /*
       0 => 김승회
       
@@ -792,16 +822,22 @@
         // 각 사람의 comment__boxs HTML 가져오기
         const tmpHTML = carouselBox[idx].querySelector(".comment__boxs");
         const commentHTML = `
-          <div class="comment__box">
-            <div class="profile__img">
-              <img src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png">
-            </div>
-            <div class="user">
-              <div class="comment">
-                <span>${message}</span>
-              </div>
-            </div>
-          </div>`;
+        <div class="comment__box">
+                      <div class="profile__img">
+                        <img
+                          src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
+                        />
+                      </div>
+                      <div class="user">
+                        <div class="comment">
+                          <span>${message}</span>
+                        </div>
+                        <div class="user-btn">
+                          <img src="./img/update.png" />
+                          <img src="./img/delete.png" />
+                        </div>
+                      </div>
+                    </div>`;
         // 만든 comment_box를 위에서 가져온 guest__log에 넣기
         tmpHTML.insertAdjacentHTML("afterbegin", commentHTML);
       };
