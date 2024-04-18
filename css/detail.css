@@ -250,9 +250,6 @@ img {
 }
 
 .user {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 95%;
   margin-left: 10px;
 }
@@ -287,10 +284,30 @@ img {
   margin-top: 5px;
 }
 
+.comment input {
+  width: 90%;
+}
+
 .comment__box .comment {
   background-color: #fff;
   padding: 0 10px;
   min-height: 20px;
+}
+.comment__box .comment input, .comment__box .comment button {
+  display: none;
+}
+.comment__box .comment.change span {
+  display: none;
+}
+
+.comment__box .comment.change {
+  background-color: #f4f4f4;
+  min-height: 45px;
+  padding: 0px 20px 0px 15px;
+}
+
+.comment__box .comment.change input, .comment__box .comment.change button {
+  display: block;
 }
 
 .comment span {

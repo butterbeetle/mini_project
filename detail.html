@@ -753,6 +753,16 @@
         }
         setBackGroundColor();
       });
+
+      
+      function change(e){
+        let parent = e.parentElement.previousElementSibling;
+        if(parent.className === "comment"){
+          let children = parent.className +=" change";
+        }else {
+          let children = parent.className ="comment";
+        }
+      }
     </script>
     <!--FireBase-->
     <script type="module">
@@ -793,6 +803,7 @@
 
       const MEMBER = 4;
 
+
       const userData = await getUser(db);
       /*
       0 => 김승회
@@ -816,6 +827,7 @@
       personalData[0] = personalData[MEMBER];
       personalData[MEMBER + 1] = personalData[1];
 
+
       // comment 창 생성 함수
       const createComment = (message, idx) => {
         // 각 사람의 comment__boxs HTML 가져오기
@@ -823,18 +835,35 @@
         const commentHTML = `
         <div class="comment__box">
           <div class="profile__img">
-            <img src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"/>
+            <img
+              src="https://images.velog.io/images/chang626/post/c9533c4f-adbb-4411-bce4-b09293d64fbf/A03EACB4-4DFA-439A-A3FE-084635A89FE6.png"
+            />
           </div>
           <div class="user">
             <div class="comment">
               <span>${message}</span>
-            </div>
-            <div class="user-btn">
-              <img src="./img/update.png" />
-              <img src="./img/delete.png" />
-            </div>
-          </div>
+              <input
+                class="commentInput"
+                type="text"
+                placeholder="댓글을 남겨주세요."
+                max="50"
+                value="${message}"
+              />
+              <button class="send">
+                <i class="fa-regular fa-paper-plane"></i>
+              </button>
+              </div>
+              <div class="commnet-icons">
+                <button onClick="change(this)">
+                  <img src="./img/update.png" />
+                </button>
+                <button>
+                  <img src="./img/delete.png" />
+                </button>
+              </div>
         </div>`;
+
+
 
         // <div class="comment__box">
         //   <div class="profile__img">
@@ -854,6 +883,8 @@
         // 만든 comment_box를 위에서 가져온 guest__log에 넣기
         tmpHTML.insertAdjacentHTML("afterbegin", commentHTML);
       };
+
+
 
       // 저장한 개인 데이터를 순회
       // 페이지 클릭 시 새 페이지로 이동 하는식이 아니라 캐러셀로 되어있어서 한번에 받아오고 한번에 처리해야 되기때문
