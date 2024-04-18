@@ -58,7 +58,7 @@ html {
   width: 400px;
   margin: 0 auto;
   padding-top: calc(150px + 7vh);
-  margin-bottom: 10vh;
+  margin-bottom: 9vh;
 }
 @media screen and (min-width: 740px) {
   .main_img {
@@ -78,20 +78,34 @@ html {
 
 .introduce_text {
   display: flex;
-  margin-top: 50px;
+  margin-top: 25px;
   font-size: 30px;
   justify-content: space-between;
   flex-direction: column;
   color: #000;
+  align-items: center;
 }
 @media screen and (min-width: 740px) {
   .introduce_text {
     flex-direction: row;
   }
 }
-.introduce_text > p:first-child {
+
+.round__rec {
+  display: flex;
+  width: 20vw;
+  height: 8vh;
+  border-radius: 50px;
+  background-color: black;
+  color: white;
   font-size: 35px;
+  align-items: center;
+  justify-content: center;
 }
+
+/* .introduce_text > p:first-child {
+  font-size: 35px;
+} */
 
 .introduce_text div p {
   line-height: 50px;
